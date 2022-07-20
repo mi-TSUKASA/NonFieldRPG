@@ -5,6 +5,7 @@ using UnityEngine;
 //クエスト全体を管理 
 public class QuestManager : MonoBehaviour
 {
+    int[] encountTable = { -1, -1, 0, -1, 0, -1 }; //敵に遭遇するテーブル（-1なら遭遇しない、0なら遭遇）
     int currentStage; //現在のステージ進行後
     public StageUIManager stageUI;
 
@@ -18,5 +19,14 @@ public class QuestManager : MonoBehaviour
     {
         currentStage++;
         stageUI.UpdateText(currentStage);
+
+        if (encountTable.Length <= currentStage)
+        {
+            Debug.Log("クリア");
+        }
+        else if (encountTable[currentStage] == 0)
+        {
+            Debug.Log("敵に遭遇");
+        }
     }
 }
