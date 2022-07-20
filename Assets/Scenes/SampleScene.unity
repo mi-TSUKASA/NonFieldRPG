@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageUI: {fileID: 375479975}
+  enemyPrefab: {fileID: 4855055353049637863, guid: f1b80c4d4ce934cf190c4f0252ca70d3, type: 3}
 --- !u!4 &145032016
 Transform:
   m_ObjectHideFlags: 0
