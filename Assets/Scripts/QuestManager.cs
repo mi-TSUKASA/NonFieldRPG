@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour
     int currentStage; //現在のステージ進行後
     public StageUIManager stageUI;
     public GameObject enemyPrefab;
+    public BattleManager battleManager;
 
 
     private void Start()
@@ -29,13 +30,16 @@ public class QuestManager : MonoBehaviour
         else if (encountTable[currentStage] == 0)
         {
             EncountEnemy();
-            stageUI.HydeButtons();
+            
         }
     }
 
     //敵に遭遇したらEnemyプレハブを生成
     void EncountEnemy()
     {
-        Instantiate(enemyPrefab);
+        stageUI.HydeButtons();
+        GameObject enemyObj = Instantiate(enemyPrefab);
+        EnemyManager enemy = enemyObj.GetComponent<EnemyManager>();
+        battleManager.SetUp(enemy);
     }
 }
