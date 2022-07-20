@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour
     public StageUIManager stageUI;
     public GameObject enemyPrefab;
     public BattleManager battleManager;
+    public SceneTransitionManager sceneTransition;
 
 
     private void Start()
@@ -25,6 +26,7 @@ public class QuestManager : MonoBehaviour
 
         if (encountTable.Length <= currentStage)
         {
+            QuestClear();
             Debug.Log("クリア");
         }
         else if (encountTable[currentStage] == 0)
@@ -46,5 +48,10 @@ public class QuestManager : MonoBehaviour
     public void EndBattle()
     {
         stageUI.ShowButtons();
+    }
+
+    void QuestClear()
+    {
+        sceneTransition.LoadTo("Town");
     }
 }
