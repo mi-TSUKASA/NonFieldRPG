@@ -9,9 +9,16 @@ public class BattleManager : MonoBehaviour
     public EnemyUIManager enemyUI;
     public PlayerManager player;
     EnemyManager enemy;
+    public QuestManager questManager;
+
+    private void Start()
+    {
+        enemyUI.gameObject.SetActive(false);
+    }
 
     public void SetUp(EnemyManager enemyManager)
     {
+        enemyUI.gameObject.SetActive(true);
         enemy = enemyManager;
         enemyUI.SetUpUI(enemy);
         playerUI.SetUpUI(player);
@@ -24,6 +31,15 @@ public class BattleManager : MonoBehaviour
         // PlayerがEnemyに攻撃
         player.Attack(enemy);
         enemyUI.UpdateUI(enemy);
+        if (enemy.hp <= 0)
+        {
+            Destroy(enemy.gameObject);
+            EndBattle();
+        }
+        else
+        {
+            EnemyAttack();
+        }
     }
 
     void EnemyAttack()
@@ -31,5 +47,12 @@ public class BattleManager : MonoBehaviour
         //EnemyがPlayerに攻撃
         enemy.Attack(player);
         playerUI.UpdateUI(player);
+    }
+
+    void EndBattle()
+    {
+        questManager.EndBattle();
+        enemyUI.gameObject.SetActive(false);
+        Debug.Log("撃破");
     }
 }

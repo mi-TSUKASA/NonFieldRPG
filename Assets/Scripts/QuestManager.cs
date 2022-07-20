@@ -42,4 +42,9 @@ public class QuestManager : MonoBehaviour
         EnemyManager enemy = enemyObj.GetComponent<EnemyManager>();
         battleManager.SetUp(enemy);
     }
+
+    public void EndBattle()
+    {
+        stageUI.ShowButtons();
+    }
 }
