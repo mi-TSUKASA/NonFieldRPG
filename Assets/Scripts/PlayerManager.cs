@@ -15,6 +15,10 @@ public class PlayerManager : MonoBehaviour
     public void Damage(int damage)
     {
         hp -= damage;
+        if (hp <= 0)
+        {
+            hp = 0;
+        }
     }
 
 }
