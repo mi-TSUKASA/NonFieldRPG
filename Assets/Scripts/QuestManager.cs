@@ -6,7 +6,12 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     int currentStage; //現在のステージ進行後
-    StageUIManager stageUI;
+    public StageUIManager stageUI;
+
+    private void Start()
+    {
+        stageUI.UpdateText(currentStage);
+    }
 
     //NextButtonが押されたら
     public void OnNextButton()
