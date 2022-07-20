@@ -235,6 +235,7 @@ MonoBehaviour:
   stageUI: {fileID: 375479975}
   enemyPrefab: {fileID: 4855055353049637863, guid: f1b80c4d4ce934cf190c4f0252ca70d3, type: 3}
   battleManager: {fileID: 1086480995}
+  sceneTransition: {fileID: 1669900334}
 --- !u!4 &145032016
 Transform:
   m_ObjectHideFlags: 0
