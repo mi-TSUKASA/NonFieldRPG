@@ -29,6 +29,11 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSourceSE;//SEのスピーカー
     public AudioClip[] audioClipsSE;//鳴らす素材
 
+    public void StopBGM()
+    {
+        audioSourceBGM.Stop();
+    }
+
     void Start()
     {
         PlayBGM("Title");

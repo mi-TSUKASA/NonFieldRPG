@@ -28,6 +28,7 @@ public class QuestManager : MonoBehaviour
         if (encountTable.Length <= currentStage)
         {
             SoundManager.instance.PlaySE(2);
+            SoundManager.instance.StopBGM();
             QuestClear();
             Debug.Log("クリア");
         }
