@@ -23,9 +23,11 @@ public class QuestManager : MonoBehaviour
     {
         currentStage++;
         stageUI.UpdateText(currentStage);
+        SoundManager.instance.PlaySE(0);
 
         if (encountTable.Length <= currentStage)
         {
+            SoundManager.instance.PlaySE(2);
             QuestClear();
             Debug.Log("クリア");
         }
@@ -34,6 +36,11 @@ public class QuestManager : MonoBehaviour
             EncountEnemy();
             
         }
+    }
+
+    public void OnToTownButton()
+    {
+        SoundManager.instance.PlaySE(0);
     }
 
     //敵に遭遇したらEnemyプレハブを生成

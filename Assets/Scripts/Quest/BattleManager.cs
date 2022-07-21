@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
 
     public void SetUp(EnemyManager enemyManager)
     {
+        SoundManager.instance.PlayBGM("Battle");
         enemyUI.gameObject.SetActive(true);
         enemy = enemyManager;
         enemyUI.SetUpUI(enemy);
@@ -28,6 +29,7 @@ public class BattleManager : MonoBehaviour
     
     void PlayerAttack()
     {
+        SoundManager.instance.PlaySE(1);
         // PlayerがEnemyに攻撃
         player.Attack(enemy);
         enemyUI.UpdateUI(enemy);
@@ -38,6 +40,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
+            //SoundManager.instance.PlaySE(1);
             EnemyAttack();
         }
     }
@@ -51,6 +54,7 @@ public class BattleManager : MonoBehaviour
 
     void EndBattle()
     {
+        SoundManager.instance.PlayBGM("Quest");
         questManager.EndBattle();
         enemyUI.gameObject.SetActive(false);
         Debug.Log("撃破");
