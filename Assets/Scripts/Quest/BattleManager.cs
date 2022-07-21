@@ -14,7 +14,10 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         enemyUI.gameObject.SetActive(false);
+        
     }
+
+    
 
     public void SetUp(EnemyManager enemyManager)
     {
@@ -41,13 +44,15 @@ public class BattleManager : MonoBehaviour
         else
         {
             //SoundManager.instance.PlaySE(1);
-            EnemyAttack();
+            StartCoroutine(EnemyAttack());
         }
     }
 
-    void EnemyAttack()
+    IEnumerator EnemyAttack()
     {
+        yield return new WaitForSeconds(1f);
         //EnemyがPlayerに攻撃
+        SoundManager.instance.PlaySE(1);
         enemy.Attack(player);
         playerUI.UpdateUI(player);
     }
