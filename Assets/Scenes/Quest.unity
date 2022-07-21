@@ -1452,6 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2023438499b0446158d32d1769f7a792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDamagePanel: {fileID: 519420032}
   playerUI: {fileID: 835499115}
   enemyUI: {fileID: 1511353615}
   player: {fileID: 1136912853}
