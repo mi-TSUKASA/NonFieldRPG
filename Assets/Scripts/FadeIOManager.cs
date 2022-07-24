@@ -5,13 +5,22 @@ using DG.Tweening;
 
 public class FadeIOManager : MonoBehaviour
 {
-    public CanvasGroup canvasGroup;
+    //???????
 
-    private void Start()
+    public static FadeIOManager instance;
+    public void Awake()
     {
-        FadeOutToIn();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
+    public CanvasGroup canvasGroup;
     public void FadeOut()
     {
         canvasGroup.blocksRaycasts = true;
@@ -24,11 +33,16 @@ public class FadeIOManager : MonoBehaviour
         canvasGroup.DOFade(0, 2f)
             .OnComplete(() => canvasGroup.blocksRaycasts = false);
     }
-    public void FadeOutToIn()
+    public void FadeOutToIn(TweenCallback action)
     {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.DOFade(1, 2f)
-            .OnComplete(() => FadeIn());
+            .OnComplete(() =>
+            {
+                action();
+                FadeIn();
+            });
+            
     }
 
 }
